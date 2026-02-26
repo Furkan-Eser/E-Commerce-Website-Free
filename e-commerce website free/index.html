@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worth Pairet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="mobile-menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <div class="nav-left">
+            <a href="#">Anasayfa</a>
+            
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Tüm Ürünler <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
+                <div class="dropdown-content">
+                    <a href="#">T-shirt</a>
+                    <a href="#">Hoodie</a>
+                    <a href="#">Dış Giyim</a>
+                    <a href="#">Tüm Ürünler</a>
+                </div>
+            </div>
+
+            <a href="#" class="highlight">Kendi Tasarımını Oluştur !</a>
+        </div>
+        
+        <div class="nav-center">
+            <a href="#" class="logo">Worth Poiret</a>
+        </div>
+        
+        <div class="nav-right">
+            <a href="#" id="openSearch"><i class="fas fa-search"></i></a>
+            <a href="login.html"><i class="far fa-user"></i></a>
+            <a href="#" id="openCart" class="cart-icon">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </a>
+        </div>
+    </header>
+
+<div class="marquee-container">
+        
+        <div class="marquee-content">
+            <span>1000 TL ve üzeri alışverişlerde sepette 100 TL indirim!</span>
+            <span>1000 TL ve üzeri alışverişlerde sepette 100 TL indirim!</span>
+            <span>1000 TL ve üzeri alışverişlerde sepette 100 TL indirim!</span>
+            <span>1000 TL ve üzeri alışverişlerde sepette 100 TL indirim!</span>
+        </div>
+
+        <div class="marquee-content">
+            <span>1000 TL ve üzeri alışverişlerde sepette 100 TL indirim!</span>
+            <span>1000 TL ve üzeri alışverişlerde sepette 100 TL indirim!</span>
+            <span>1000 TL ve üzeri alışverişlerde sepette 100 TL indirim!</span>
+            <span>1000 TL ve üzeri alışverişlerde sepette 100 TL indirim!</span>
+        </div>
+
+    </div>
+
+    <section class="slider-container">
+        <div class="slide active">
+            <img src="/assets/slıde2.png" alt="Ürün 1">
+        </div>
+        <div class="slide">
+            <img src="/assets/Gemini_Generated_Image_aff73maff73maff7.png" alt="Ürün 2">
+        </div>
+
+
+
+        
+
+        <button class="slider-arrow prev-btn"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-arrow next-btn"><i class="fas fa-chevron-right"></i></button>
+
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+        </div>
+    </section>
+
+<section class="new-collection">
+    <h2 class="section-title">Yeni Koleksiyon!</h2>
+    
+    <div class="product-grid">
+        <div class="product-card">
+            <div class="product-image-container">
+                <img src="/assets/worthpoiret1.png" alt="Hoodie Ön" class="img-front">
+                <img src="/assets/worthpoıret2.png" alt="Hoodie Arka" class="img-back">
+            </div>
+            <button class="add-to-cart">SEPETE EKLE</button>
+            <div class="product-info">
+                <h3 class="product-name">Need Money For Porsche T-SHIRT</h3>
+                <span class="product-price">₺ 650.00</span>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image-container">
+                <img src="/assets/worthpoiret1.png" alt="T-Shirt Ön" class="img-front">
+                <img src="/assets/worthpoıret2.png" alt="T-Shirt Arka" class="img-back">
+            </div>
+            <button class="add-to-cart">SEPETE EKLE</button>
+            <div class="product-info">
+                <h3 class="product-name">Need Money For Porsche T-SHIRT</h3>
+                <span class="product-price">₺ 1,250.00</span>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image-container">
+                <img src="/assets/worthpoıret2.png" alt="Sweatpant Ön" class="img-front">
+                <img src="/assets/worthpoiret1.png" alt="Sweatpant Arka" class="img-back">
+            </div>
+            <button class="add-to-cart">SEPETE EKLE</button>
+            <div class="product-info">
+                <h3 class="product-name">Need Money For Porsche T-SHIRT</h3>
+                <span class="product-price">₺ 2,150.00</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image-showcase">
+    <div class="showcase-grid">
+        <div class="showcase-item">
+            <img src="/assets/Ekran görüntüsü 2026-02-26 082838.png" alt="Wearable Art" class="showcase-img">
+        </div>
+
+        <div class="showcase-item">
+            <img src="/assets/Ekran görüntüsü 2026-02-26 082838.png" alt="Roots" class="showcase-img">
+        </div>
+
+        <div class="showcase-item">
+            <img src="/assets/Ekran görüntüsü 2026-02-26 082838.png" alt="Legacy" class="showcase-img">
+        </div>
+    </div>
+</section>
+<section class="trust-badges">
+        <div class="badges-container">
+            
+            <div class="badge-item">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <polyline points="9 12 11 14 15 10"></polyline>
+                </svg>
+                <p>256 Bit SSL ile güvende alışveriş</p>
+            </div>
+            
+            <div class="badge-item">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="1" y="3" width="15" height="13"></rect>
+                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                    <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                    <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                </svg>
+                <p>2.000 ₺ Üzeri Kargo Bedava</p>
+            </div>
+            
+            <div class="badge-item">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M10 7v10"></path>
+                    <path d="M10 11h4"></path>
+                    <path d="M10 14h4"></path>
+                </svg>
+                <p>14 iş günü içerisinde iade</p>
+            </div>
+
+        </div>
+    </section>
+
+<section class="newsletter-section">
+        <div class="newsletter-content">
+            <h2>Kampanyalardan ilk sen haberdar ol!</h2>
+            <form class="newsletter-form">
+                <div class="input-group">
+                    <input type="email" placeholder="email adresiniz" required>
+                    <button type="submit">BİZE KATIL!</button>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="kvkk" required>
+                    <label for="kvkk">Kişisel verilerin korunması kanunu okudum, onaylıyorum</label>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-links-container">
+            <div class="footer-column">
+                <h4>Kategoriler</h4>
+                <ul>
+                    <li><a href="#">Yeni Koleksiyon!</a></li>
+                    <li><a href="#">T-shirt</a></li>
+                    <li><a href="#">Hoodie</a></li>
+                    <li><a href="#">Eşofman Altı</a></li>
+                    <li><a href="#">Dış Giyim</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Hesabım</h4>
+                <ul>
+                    <li><a href="login.html">Giriş Yap</a></li>
+                    <li><a href="login.html">Kayıt Ol</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Hakkımızda</h4>
+                <ul>
+                    <li><a href="contact.html">İletişim</a></li>
+                    <li><a href="sss.html">Sıkça Sorulan Sorular</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Destek</h4>
+                <ul>
+                    <li><a href="#">Kargo ve İade</a></li>
+                    <li><a href="#">Beden Tablosu</a></li>
+                    <li><a href="#">Aydınlatma Metni</a></li>
+                    <li><a href="#">Kullanıcı Sözleşmesi</a></li>
+                    <li><a href="#">Mesafeli Satış Sözleşmesi</a></li>
+                    <li><a href="#">Tüketici Hakları - Cayma - İptal İade Koşulları</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom-icons">
+            <div class="social-icons">
+                <a target="_blank" href="https://www.instagram.com/worthpoiret/"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+            <div class="payment-icons">
+                <i class="fa-brands fa-cc-visa" style="color: #1434CB;"></i>
+                <i class="fa-brands fa-cc-mastercard" style="color: #EB001B;"></i>
+            </div>
+        </div>
+    </footer>
+
+    <div class="footer-copyright">
+        <div class="copyright-content">
+            <p>© 2026 - Worth Poiret®</p>
+        </div>
+    </div>
+
+
+
+
+<div class="cart-overlay" id="cartOverlay"></div>
+    
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>SEPETİNİZ</h3>
+            <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
+        </div>
+        
+        <div class="cart-items">
+            
+            <div class="cart-item">
+                <img src="/assets/worthpoiret1.png" alt="Hoodie" class="cart-item-img">
+                <div class="cart-item-info">
+                    <h4>Need Money For Porsche</h4>
+                    <p class="cart-item-price">₺ 2,650.00</p>
+                    <div class="cart-item-quantity">
+                        <button class="qty-btn">-</button>
+                        <input type="text" value="1" readonly>
+                        <button class="qty-btn">+</button>
+                    </div>
+                </div>
+                <button class="remove-item"><i class="fas fa-trash-alt"></i></button>
+            </div>
+
+            </div>
+        
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>ARA TOPLAM:</span>
+                <span>₺ 2,650.00</span>
+            </div>
+            <p class="cart-tax-info">Kargo ve vergiler ödeme adımında hesaplanır.</p>
+            <button class="checkout-btn">GÜVENLİ ÖDEME</button>
+        </div>
+    </div>
+
+
+
+
+
+
+<div class="search-overlay" id="searchOverlay">
+        <button class="close-search" id="closeSearch"><i class="fas fa-times"></i></button>
+        
+        <div class="search-container">
+            <form action="#" method="GET">
+                <input type="text" placeholder="Ne aramıştınız?" class="search-input" id="searchInput" autocomplete="off">
+                <button type="submit" class="search-submit"><i class="fas fa-search"></i></button>
+            </form>
+            
+            <div class="search-suggestions">
+                <p>Popüler Aramalar:</p>
+                <a href="#">Hoodie</a>
+                <a href="#">T-shirt</a>
+                <a href="#">Yeni Sezon</a>
+                <a href="#">Aksesuar</a>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

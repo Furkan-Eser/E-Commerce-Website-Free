@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim - Worth Poiret</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="mobile-menu-icon"><i class="fas fa-bars"></i></div>
+        <div class="nav-left">
+            <a href="index.html">Anasayfa</a>
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Tüm Ürünler <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
+            </div>
+            <a href="#" class="highlight">Yeni Koleksiyon!</a>
+        </div>
+        <div class="nav-center">
+            <a href="index.html" class="logo">Worth Poiret</a>
+        </div>
+        <div class="nav-right">
+            <a href="#" id="openSearch"><i class="fas fa-search"></i></a>
+            <a href="login.html"><i class="far fa-user"></i></a>
+            <a href="#" class="cart-icon" id="openCart">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </a>
+        </div>
+    </header>
+
+    <section class="contact-page-section">
+        <div class="contact-container">
+            
+            <div class="contact-header-text">
+                <h2>Bize Ulaşın</h2>
+                <p>Görüş, öneri ya da şikayetiniz paylaşmak isterseniz, "İletişim Formu"nu doldurarak bize ulaşabilirsiniz.<br>En kısa sürede değerlendirip size geri döneceğiz.</p>
+            </div>
+
+            <form class="contact-form-layout">
+                
+                <div class="form-row">
+                    <div class="input-wrapper">
+                        <label><span class="req">*</span> Ad</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="input-wrapper">
+                        <label><span class="req">*</span> Soyad</label>
+                        <input type="text" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-wrapper">
+                        <label><span class="req">*</span> Email</label>
+                        <input type="email" required>
+                    </div>
+                    <div class="input-wrapper">
+                        <label>Telefon</label>
+                        <div class="phone-input-group">
+                            <div class="country-code">
+                                <span>🇹🇷</span>
+                                <i class="fas fa-chevron-down" style="font-size: 10px; margin: 0 5px;"></i>
+                                <span>+90</span>
+                            </div>
+                            <input type="tel">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-wrapper full-width">
+                        <label><span class="req">*</span> Mesaj</label>
+                        <textarea rows="4" required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-row checkbox-row">
+                    <label class="custom-checkbox-container">
+                        <input type="checkbox" required>
+                        <span class="checkmark"></span>
+                        <span class="check-text">Kişisel verilerin korunması kanunu <a href="#" class="red-link">okudum, onaylıyorum</a></span>
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-contact-btn">GÖNDER</button>
+
+            </form>
+        </div>
+    </section>
+
+    <footer class="site-footer" style="padding-top: 40px; border-top: 1px solid #eaeaea;">
+        <div class="footer-links-container">
+            <div class="footer-column">
+                <h4>Kategoriler</h4>
+                <ul>
+                    <li><a href="#">Yeni Koleksiyon!</a></li>
+                    <li><a href="#">T-shirt</a></li>
+                    <li><a href="#">Hoodie</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Hesabım</h4>
+                <ul>
+                    <li><a href="login.html">Giriş Yap</a></li>
+                    <li><a href="login.html">Kayıt Ol</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Hakkımızda</h4>
+                <ul>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                    <li><>Sıkça Sorulan Sorular</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Destek</h4>
+                <ul>
+                    <li><a href="#">Kargo ve İade</a></li>
+                    <li><a href="#">Beden Tablosu</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <div id="searchOverlay" class="search-overlay"></div>
+    <div id="cartSidebar" class="cart-sidebar"></div>
+    <div id="cartOverlay" class="cart-overlay"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

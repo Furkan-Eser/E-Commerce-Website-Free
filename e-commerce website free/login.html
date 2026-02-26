@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş / Üye Ol - worthpoiret </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="login.css"> </head>
+    
+<body class="auth-page">
+
+    <div class="auth-header">
+        <a href="index.html" class="logo">Worth Poiret</a>
+    </div>
+
+    <div class="auth-container">
+        
+        <div class="auth-toggle">
+            <button class="active" id="loginToggle">GİRİŞ YAP</button>
+            <button id="registerToggle">KAYIT OL</button>
+        </div>
+
+        <form id="loginForm" class="auth-form active">
+            <div class="input-group">
+                <input type="email" placeholder="E-posta Adresi" required>
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Şifre" required>
+            </div>
+            <a href="#" class="forgot-password">Şifremi Unuttum</a>
+            <button type="submit" class="auth-btn">GİRİŞ YAP</button>
+        </form>
+
+        <form id="registerForm" class="auth-form">
+            <div class="input-group double">
+                <input type="text" placeholder="Ad" required>
+                <input type="text" placeholder="Soyad" required>
+            </div>
+            <div class="input-group">
+                <input type="email" placeholder="E-posta Adresi" required>
+            </div>
+            <div class="input-group">
+                <input type="tel" placeholder="Telefon Numarası (Opsiyonel)">
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Şifre" required>
+            </div>
+            <button type="submit" class="auth-btn">ÜYE OL</button>
+        </form>
+
+    </div>
+
+    <script src="login.js"></script> </body>
+</html>

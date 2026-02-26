@@ -1,0 +1,156 @@
+
+
+/* ==========================================
+   GİRİŞ YAP / KAYIT OL SAYFASI (login.html)
+   ========================================== */
+
+/* Sayfanın arka planını hafif gri yapıp kutuyu merkeze alıyoruz */
+body.auth-page {
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.auth-header {
+    padding: 60px 0 40px 0;
+}
+
+.auth-container {
+    background-color: #fff;
+    width: 100%;
+    max-width: 450px; /* Kutunun genişliği */
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08); /* Yumuşak bir gölge */
+    border-radius: 4px;
+    margin-bottom: 40px;
+}
+
+/* Giriş / Kayıt Sekmeleri */
+.auth-toggle {
+    display: flex;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eee;
+}
+
+.auth-toggle button {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 15px 0;
+    font-size: 13px;
+    font-weight: 800;
+    color: #999;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s;
+    letter-spacing: 1px;
+}
+
+.auth-toggle button.active {
+    color: #000;
+}
+
+/* Aktif sekmenin altındaki siyah çizgi */
+.auth-toggle button.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+}
+
+/* Formların Görünürlük ve Animasyon Ayarı */
+.auth-form {
+    display: none; /* Varsayılan olarak ikisini de gizle */
+    animation: fadeIn 0.4s ease;
+}
+
+.auth-form.active {
+    display: block; /* Sadece '.active' sınıfı olanı göster */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Input (Giriş) Kutuları */
+.auth-form .input-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+/* Ad ve Soyad kutularını yan yana dizmek için */
+.auth-form .input-group.double {
+    display: flex;
+    gap: 15px;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 1px solid #e1e1e1;
+    background-color: #fafafa;
+    font-size: 13px;
+    outline: none;
+    transition: all 0.3s;
+    /* Yazı yazılabilmesi için seçimi serbest bırakıyoruz */
+    user-select: auto;
+    -webkit-user-select: auto;
+}
+
+.auth-form input:focus {
+    border-color: #000;
+    background-color: #fff;
+}
+
+.forgot-password {
+    display: block;
+    text-align: right;
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 25px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.forgot-password:hover { color: #000; }
+
+.auth-btn {
+    width: 100%;
+    padding: 16px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.auth-btn:hover { background-color: #333; }
+
+/* Mobil Uyum */
+@media screen and (max-width: 480px) {
+    .auth-container {
+        padding: 30px 20px;
+        box-shadow: none; /* Mobilde gölgeyi kaldırıp dümdüz yapıyoruz */
+    }
+    .auth-form .input-group.double {
+        flex-direction: column; /* Mobilde Ad-Soyad alt alta gelsin */
+        gap: 15px;
+    }
+}
+
+
+.logo{
+
+    font-size: 40px;
+    text-decoration: none;
+    color: black;
+}

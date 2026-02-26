@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sıkça Sorulan Sorular - worth poiret</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="mobile-menu-icon"><i class="fas fa-bars"></i></div>
+        <div class="nav-left">
+            <a href="index.html">Anasayfa</a>
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Tüm Ürünler <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
+            </div>
+            <a href="#" class="highlight">Yeni Koleksiyon!</a>
+        </div>
+        <div class="nav-center">
+            <a href="index.html" class="logo">Worth Poiret</a>
+        </div>
+        <div class="nav-right">
+            <a href="#" id="openSearch"><i class="fas fa-search"></i></a>
+            <a href="login.html"><i class="far fa-user"></i></a>
+            <a href="#" class="cart-icon" id="openCart">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </a>
+        </div>
+    </header>
+
+    <section class="faq-section">
+        <div class="faq-container">
+            <h2 class="faq-title">Sıkça Sorulan Sorular</h2>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Kargom kaç gün içinde ulaşır?
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Siparişleriniz, onaylandıktan sonra 1-3 iş günü içerisinde kargoya teslim edilmektedir. Kargo firmasının yoğunluğuna ve bulunduğunuz bölgeye göre teslimat süresi 1 ila 4 iş günü arasında değişiklik gösterebilir.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        İade ve değişim şartlarınız nelerdir?
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Satın aldığınız ürünleri, kullanılmamış ve etiketleri sökülmemiş olması şartıyla teslim tarihinden itibaren 14 gün içerisinde iade edebilir veya değiştirebilirsiniz. İade kargo bedeli kampanyalarımıza göre değişiklik gösterebilir.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Hangi ödeme yöntemlerini kabul ediyorsunuz?
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Web sitemiz üzerinden kredi kartı, banka kartı (Visa, Mastercard, Troy) ile 256 Bit SSL güvencesiyle taksitli veya tek çekim olarak ödeme yapabilirsiniz. Havale/EFT seçeneğimiz de mevcuttur.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Beden tablomuza nasıl ulaşabilirim?
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Her ürünümüzün kendi detay sayfasında, "Sepete Ekle" butonunun hemen üzerinde detaylı ölçülerin yer aldığı bir "Beden Tablosu" bağlantısı bulunmaktadır. Ürünlerimiz genellikle oversize kesimdir.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="site-footer" style="padding-top: 40px; border-top: 1px solid #eaeaea;">
+        <div class="footer-links-container">
+            </div>
+    </footer>
+
+    <div id="searchOverlay" class="search-overlay"></div>
+    <div id="cartSidebar" class="cart-sidebar"></div>
+    <div id="cartOverlay" class="cart-overlay"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

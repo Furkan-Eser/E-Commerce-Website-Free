@@ -1,0 +1,1305 @@
+/* --- Genel Sıfırlama --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    
+    
+}
+
+/* --- Genel Sıfırlama ve Scroll Ayarı --- */
+html {
+    /* Sayfanın dikeyde her zaman kaydırılabilir olmasını sağlar */
+    overflow-y: auto; 
+    overflow-x: hidden; /* Yanlara doğru kaymayı engeller, jilet gibi yapar */
+    scroll-behavior: smooth; /* Sayfa içi geçişleri yumuşatır */
+}
+
+body {
+    background-color: #fff;
+    /* YENİ EKLENEN KISIM: İçerikleri yukarıdan aşağı esnek şekilde dizer */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ekranın tamamını garanti altına alır */
+    user-select: none;
+}
+
+/* --- HEADER (MENÜ) --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eaeaea;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.mobile-menu-icon {
+    display: none; /* Bilgisayarda gizli */
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex: 1;
+}
+
+.nav-right {
+    justify-content: flex-end;
+}
+
+.nav-left a, .nav-right a {
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.nav-left a.highlight {
+    color: #b30000;
+}
+
+/* Logonun Milimetrik Ortalanması */
+.nav-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: 900;
+    text-decoration: none;
+    color: #000;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Sepet İkonu */
+.cart-icon {
+    position: relative;
+    font-size: 20px !important;
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: #000;
+    color: #fff;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+
+/* --- AÇILIR MENÜ (DROPDOWN) --- */
+.dropdown {
+    position: relative;
+    display: inline-block;
+   
+}
+
+.dropdown:hover .dropbtn {
+    border-bottom: 2px solid #000;
+    padding-bottom: 2px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+    z-index: 100;
+    top: 100%;
+    left: 0;
+    padding: 10px 0;
+}
+
+.dropdown-content a {
+    padding: 10px 20px;
+    display: block;
+    transition: background-color 0.2s;
+}
+
+.dropdown-content a:hover {
+    background-color: #f9f9f9;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/* --- KUSURSUZ KAYAN YAZI --- */
+.marquee-container {
+    display: flex; /* Vagonları yan yana dizer */
+    width: 100%;
+    overflow: hidden; /* Dışarı taşan yazıları gizler */
+    background-color: #000;
+    color: #fff;
+    padding: 10px 0;
+    position: relative;
+    z-index: 10;
+}
+
+.marquee-content {
+    display: flex;
+    flex-shrink: 0; /* Yazıların sıkışıp alt satıra geçmesini engeller */
+    min-width: 100%; /* Vagonun en az ekran kadar geniş olmasını sağlar */
+    animation: marquee-scroll 20s linear infinite; /* 20 saniyelik sonsuz döngü */
+}
+
+.marquee-content span {
+    padding: 0 40px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    white-space: nowrap; /* Metnin tek satırda kalmasını garanti eder */
+}
+
+/* Animasyon: Vagonları %100 sola kaydır */
+@keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
+
+/* --- SLIDER --- */
+.slider-container {
+    position: relative;
+    width: 100%;
+    /* Ekranın %85'ini kaplasın, böylece alttaki ürünlerin ucu gözükür */
+    height: 85vh; 
+    overflow: hidden;
+    background-color: #f5f5f5;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* Görselin üstten hizalanması ve tam oturması */
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ekranı boşluksuz kaplar */
+    object-position: top center; /* Üst kısımların KESİNLİKLE görünmesini sağlar */
+    display: block;
+}
+
+/* Slider Okları ve Noktaları */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 10;
+    padding: 20px;
+    transition: color 0.3s;
+}
+
+.slider-arrow:hover { color: #000; }
+.prev-btn { left: 20px; }
+.next-btn { right: 20px; }
+
+.slider-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dot.active { background-color: #000; }
+
+/* =========================================
+   RESPONSIVE (MOBİL UYUM) AYARLARI 
+   ========================================= */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+    
+    .nav-left {
+        display: none; /* Mobilde sol menü linklerini gizle */
+    }
+
+    .mobile-menu-icon {
+        display: block; /* Hamburger ikonu göster */
+        flex: 1;
+    }
+
+    .logo {
+        font-size: 24px; /* Logoyu küçült */
+    }
+
+    .nav-right {
+        gap: 15px;
+    }
+
+    .marquee-content span {
+        font-size: 11px;
+        padding: 0 20px;
+    }
+
+    .slider-arrow {
+        font-size: 24px;
+        padding: 10px;
+    }
+    
+    .slider-container {
+        height: calc(100vh - 90px); /* Mobilde yükseklik hesabı */
+    }
+}
+
+
+
+/* --- YENİ KOLEKSİYON (3'LÜ GRID) --- */
+.new-collection {
+    padding: 80px 40px;
+    background-color: #fff;
+    text-align: center; /* Başlığı ortalamak için */
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 50px;
+    color: #330000;
+    text-transform: none;
+}
+
+.product-grid {
+    display: grid;
+    /* 3 kolonlu yapı ve kolonlar arası boşluk */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 40px;
+    /* Izgarayı sayfanın ortasına sabitleyen kritik kısım */
+    max-width: 1200px;
+    margin: 0 auto; 
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* Ürün bilgileri sola yaslı kalsın */
+}
+
+/* Görsel Alanı */
+.product-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1.25; /* Görsel oranını korur */
+    overflow: hidden;
+    margin-bottom: 15px;
+    background-color: #f9f9f9; /* Fotoğraf yoksa dolgu rengi */
+}
+
+.product-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.5s ease;
+}
+
+/* Hover Efekti: Arkasını Göster */
+.img-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.product-card:hover .img-front { opacity: 0; }
+.product-card:hover .img-back { opacity: 1; }
+
+/* Buton Tasarımı */
+.add-to-cart {
+    width: 100%;
+    padding: 14px;
+    background-color: transparent;
+    border: 1px solid #000;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+.add-to-cart:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Ürün İsim ve Fiyat */
+.product-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.product-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #000;
+    line-height: 1.4;
+}
+
+.product-price {
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+}
+
+/* --- MOBİL UYUM (Responsive) --- */
+@media screen and (max-width: 992px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr); /* Tablette 2'li */
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .product-grid {
+        grid-template-columns: 1fr; /* Mobilde tekli veya çok dar ise 1'li */
+        padding: 0 20px;
+    }
+}   
+
+
+
+
+
+
+
+/* --- GÖRSEL VİTRİN BÖLÜMÜ TASARIMI --- */
+.image-showcase {
+    padding: 80px 40px; /* Üst/Alt ve Yan boşluklar */
+    background-color: #fff; /* Arka plan rengi */
+}
+
+/* Görsel Izgarası (Grid) */
+.showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 eşit kolon */
+    gap: 30px; /* Görseller arası boşluk */
+    max-width: 2000px; /* Üstteki ürünlerle aynı hizada olması için */
+    margin: 0 auto; /* Ortala */
+}
+
+/* Görsel Kutusu (Konteynır) */
+.showcase-item {
+    position: relative;
+    width: 100%;
+    /* İstenilen 900x1123 en-boy oranı */
+    aspect-ratio: 900 / 1123; 
+    overflow: hidden; /* Görsel büyüyünce taşanı gizle */
+    border-radius: 4px; /* Hafif yumuşak köşeler (isteğe bağlı) */
+    cursor: pointer;
+}
+
+/* Görselin Kendisi ve Animasyon Başlangıcı */
+.showcase-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Kutuyu tamamen kapla, boşluk bırakma */
+    /* Yumuşak geçiş efekti (Daha önceki ürünlerde kullandığımızın aynısı) */
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: scale(1.0); /* Başlangıç boyutu */
+}
+
+/* --- HOVER EFEKTİ (YAKINLAŞMA) --- */
+/* Fare kutunun üzerine gelince görsel büyüsün */
+.showcase-item:hover .showcase-img {
+    transform: scale(1.06); /* %6 oranında yumuşakça büyüt */
+}
+
+/* --- MOBİL UYUM (Responsive) --- */
+@media screen and (max-width: 992px) {
+    .showcase-grid {
+        padding: 0 20px;
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .showcase-grid {
+        /* Mobilde görseller alt alta dizilsin, daha büyük görünsün */
+        grid-template-columns: 1fr; 
+        /* Mobilde en-boy oranını biraz daha kareye yakınlaştırabiliriz (isteğe bağlı) */
+        /* aspect-ratio: 4 / 5; */ 
+    }
+    .image-showcase {
+        padding: 40px 0; /* Mobilde dikey boşluğu azalt */
+    }
+}
+
+
+/* --- BÜLTEN KAYIT (NEWSLETTER) --- */
+.newsletter-section {
+    /* Buraya görseldeki dalgalı arka plan resminin yolunu ekleyebilirsin. 
+       Şimdilik simsiyah bir arka plan veriyorum. */
+    background-color: #050505;
+    background-image: url('senin-arka-plan-resmin.jpg'); /* Resmini buraya ekle */
+    background-size: cover;
+    background-position: center;
+    padding: 80px 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.newsletter-content h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.newsletter-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.input-group {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+/* E-posta kutusunun içine yazı yazılabilmesi için seçimi serbest bırakıyoruz */
+.input-group input {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    font-size: 14px;
+    outline: none;
+    user-select: auto; /* ÖNCEKİ ENGELİ KALDIRIYORUZ */
+    -webkit-user-select: auto;
+}
+
+.input-group button {
+    padding: 15px 40px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.input-group button:hover {
+    background-color: #333;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 12px;
+    color: #ccc;
+}
+
+.checkbox-group input {
+    cursor: pointer;
+}
+
+/* --- FOOTER (ALT BİLGİ) --- */
+.site-footer {
+    background-color: #ffffff;
+    padding: 60px 40px 20px 40px;
+}
+
+.footer-links-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-column h4 {
+    font-size: 15px;
+    font-weight: 800;
+    margin-bottom: 25px;
+    color: #000;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 15px;
+}
+
+.footer-column ul a {
+    text-decoration: none;
+    color: #555;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.footer-column ul a:hover {
+    color: #000;
+}
+
+.footer-bottom-icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 40px auto 0 auto;
+    padding-top: 20px;
+}
+
+.social-icons a {
+    color: #000;
+    font-size: 22px;
+    margin-right: 20px;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.social-icons a:hover {
+    opacity: 0.6;
+}
+
+.payment-icons i {
+    font-size: 28px;
+    margin-left: 10px;
+}
+
+/* --- TELİF HAKKI (COPYRIGHT) BARI --- */
+.footer-copyright {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 40px;
+}
+
+.copyright-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.copyright-content p {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* --- MOBİL UYUM (RESPONSIVE) --- */
+@media screen and (max-width: 992px) {
+    .footer-links-container {
+        grid-template-columns: repeat(2, 1fr); /* Tablette 2 kolon */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .newsletter-content h2 {
+        font-size: 24px;
+    }
+    
+    .input-group {
+        flex-direction: column; /* Mobilde giriş kutusu ve buton alt alta dizesin */
+    }
+    
+    .input-group button {
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .checkbox-group label {
+        text-align: left;
+        line-height: 1.4;
+    }
+
+    .footer-links-container {
+        grid-template-columns: 1fr; /* Mobilde tek kolon, hepsi alt alta */
+        gap: 40px;
+    }
+
+    .footer-bottom-icons {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+}
+
+
+
+
+
+/* --- GÜVEN BANDI (TRUST BADGES) --- */
+.trust-badges {
+    background-color: #ffffff;
+    padding: 60px 20px;
+    /* Üstteki kısımdan ayırmak için istersen çok hafif bir üst çizgi ekleyebiliriz */
+    /* border-top: 1px solid #f9f9f9; */ 
+}
+
+.badges-container {
+    display: flex;
+    justify-content: space-around; /* İkonları ekrana eşit aralıklarla yayar */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px; /* İkon ile yazı arasındaki boşluk */
+}
+
+/* İkonların rengini ayarlıyoruz */
+.badge-item svg {
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.badge-item p {
+    font-size: 14px;
+    font-weight: 500; /* Görseldeki gibi sade ve net bir font kalınlığı */
+    color: #000;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+/* --- MOBİL UYUM (RESPONSIVE) --- */
+@media screen and (max-width: 768px) {
+    .badges-container {
+        flex-direction: column; /* Mobilde ikonları alt alta dizer */
+        gap: 40px; /* Alt alta dizildiklerinde aralarındaki boşluğu açar */
+    }
+}
+
+
+
+
+
+/* --- TAM EKRAN ARAMA (SEARCH OVERLAY) --- */
+.search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.97); /* Arka planı hafifçe gösteren temiz bir beyaz */
+    z-index: 2000; /* Menünün de üstüne çıkmasını sağlar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Animasyon başlangıç değerleri */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* JavaScript bu sınıfı eklediğinde görünür olacak */
+.search-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Çarpı (Kapatma) Butonu */
+.close-search {
+    position: absolute;
+    top: 40px;
+    right: 50px;
+    background: transparent;
+    border: none;
+    font-size: 35px;
+    cursor: pointer;
+    color: #000;
+    transition: transform 0.3s;
+}
+
+.close-search:hover {
+    transform: scale(1.1) rotate(90deg); /* Üzerine gelince çok havalı bir dönme efekti */
+}
+
+/* Ortadaki Arama Kutusu Konteynırı */
+.search-container {
+    width: 80%;
+    max-width: 800px;
+    transform: translateY(30px); /* Aşağıdan yukarı gelme efekti için */
+    transition: transform 0.4s ease-out;
+}
+
+.search-overlay.active .search-container {
+    transform: translateY(0);
+}
+
+/* Çizgili İddialı Form Tasarımı */
+.search-container form {
+    display: flex;
+    border-bottom: 3px solid #000; /* Çok kalın, net bir alt çizgi */
+    padding-bottom: 10px;
+}
+
+/* Yazı yazılan yerin kuralları */
+.search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 40px; /* BÜYÜK ve iddialı font */
+    font-weight: 800;
+    color: #000;
+    outline: none;
+    /* Site genelinde yazıyı engellemiştik, burada serbest bırakıyoruz! */
+    user-select: auto; 
+    -webkit-user-select: auto;
+}
+
+.search-input::placeholder {
+    color: #ccc;
+    font-weight: 400;
+}
+
+.search-submit {
+    background: transparent;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #000;
+    padding: 0 10px;
+    transition: color 0.3s;
+}
+
+.search-submit:hover { color: #888; }
+
+/* Popüler Arama Etiketleri */
+.search-suggestions {
+    margin-top: 40px;
+    text-align: left;
+}
+
+.search-suggestions p {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.search-suggestions a {
+    display: inline-block;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color: #f1f1f1;
+    color: #000;
+    text-decoration: none;
+    border-radius: 30px; /* Yumuşak kapsül görünümü */
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.search-suggestions a:hover {
+    background-color: #000;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Mobil Uyum */
+@media screen and (max-width: 768px) {
+    .search-input { font-size: 26px; }
+    .close-search { top: 20px; right: 25px; font-size: 28px; }
+}
+
+
+
+
+/* --- SEPET ÇEKMECESİ (CART SIDEBAR) --- */
+
+/* Arka planı hafif karartan örtü */
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Yarı saydam siyah */
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+
+.cart-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Sağdan açılan ana panel */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    max-width: 100%; /* Mobilde ekranı tam kaplaması için */
+    height: 100vh;
+    background-color: #fff;
+    z-index: 2001;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    /* Paneli başlangıçta %100 sağa iterek ekran dışına çıkarıyoruz */
+    transform: translateX(100%); 
+    /* Soft animasyon efekti */
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.cart-sidebar.active {
+    /* Class eklendiğinde paneli kendi yerine çekiyoruz */
+    transform: translateX(0);
+}
+
+/* Üst Kısım (Başlık ve Çarpı) */
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-header h3 {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #000;
+    transition: transform 0.3s;
+}
+
+.close-cart:hover {
+    transform: rotate(90deg); /* Havalı dönme efekti */
+}
+
+/* Sepet İçeriği (Ürünlerin kaydırılabilir alanı) */
+.cart-items {
+    flex: 1; /* Ortadaki alanı tamamen doldurur */
+    overflow-y: auto; /* Çok ürün varsa sadece burası kayar */
+    padding: 30px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.cart-item-img {
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+    background-color: #f9f9f9;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-info h4 {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.cart-item-price {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Adet Seçici Tasarımı */
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    width: fit-content;
+}
+
+.qty-btn {
+    background: none;
+    border: none;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.cart-item-quantity input {
+    width: 30px;
+    text-align: center;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+    pointer-events: none; /* Rakamın fareyle seçilmesini engeller */
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.remove-item:hover { color: #000; }
+
+/* Alt Kısım (Toplam ve Ödeme Butonu) */
+.cart-footer {
+    padding: 30px;
+    border-top: 1px solid #eee;
+    background-color: #fafafa;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.cart-tax-info {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.checkout-btn:hover { background-color: #333; }
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   İLETİŞİM SAYFASI (iletisim.html)
+   ========================================== */
+
+.contact-page-section {
+    padding: 60px 20px 100px 20px;
+    background-color: #fff;
+    min-height: 60vh;
+}
+
+.contact-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Başlık ve Açıklama Metni */
+.contact-header-text {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.contact-header-text h2 {
+    font-size: 32px;
+    font-weight: 300; /* Görseldeki gibi ince ve zarif bir font */
+    margin-bottom: 20px;
+    color: #111;
+}
+
+.contact-header-text p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Form Satırları ve Izgara Yapısı */
+.contact-form-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Satırlar arası boşluk */
+}
+
+.form-row {
+    display: flex;
+    gap: 40px; /* Yan yana duran inputlar arası boşluk */
+}
+
+/* Mobilde yan yana olanları alt alta at */
+@media screen and (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+/* Input Kapsayıcıları ve Etiketler (Labels) */
+.input-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-wrapper.full-width {
+    width: 100%;
+}
+
+.input-wrapper label {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.input-wrapper label .req {
+    color: #d32f2f; /* Kırmızı Yıldız */
+    margin-right: 3px;
+}
+
+/* Kutuların Sadece Alt Çizgili Olması */
+.input-wrapper input[type="text"],
+.input-wrapper input[type="email"],
+.input-wrapper input[type="tel"],
+.input-wrapper textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    font-size: 14px;
+    color: #000;
+    background-color: transparent;
+    outline: none;
+    transition: border-color 0.3s;
+    user-select: auto;
+    -webkit-user-select: auto;
+}
+
+.input-wrapper input:focus,
+.input-wrapper textarea:focus {
+    border-bottom: 1px solid #000; /* Tıklanınca çizgi siyah ve belirgin olur */
+}
+
+.input-wrapper textarea {
+    resize: vertical; /* Sadece dikeyde büyütülebilsin */
+}
+
+/* Özel Telefon Alanı (Bayrak ve Kod) */
+.phone-input-group {
+    display: flex;
+    align-items: flex-end; /* Çizgiyle aynı hizada olsunlar */
+}
+
+.country-code {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 10px 10px 0;
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* KVKK Checkbox Alanı */
+.checkbox-row {
+    margin-top: 20px;
+}
+
+.custom-checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 13px;
+    color: #333;
+}
+
+.custom-checkbox-container input {
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.red-link {
+    color: #d32f2f; /* Görseldeki kırmızı tonu */
+    text-decoration: underline;
+}
+
+.red-link:hover {
+    color: #000;
+}
+
+/* Siyah Gönder Butonu */
+.submit-contact-btn {
+    width: 100%;
+    padding: 18px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.submit-contact-btn:hover {
+    background-color: #333;
+}
+
+
+
+/* ==========================================
+   SIKÇA SORULAN SORULAR SAYFASI (sss.html)
+   ========================================== */
+
+.faq-section {
+    padding: 80px 20px 100px 20px;
+    background-color: #fff;
+    min-height: 60vh;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 300;
+    margin-bottom: 50px;
+    color: #000;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Her Bir Soru Kutusu */
+.faq-item {
+    border-bottom: 1px solid #eaeaea;
+}
+
+/* Soru Başlığı Butonu */
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 25px 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #111;
+    cursor: pointer;
+    text-align: left;
+    transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+    color: #555;
+}
+
+/* Sağdaki Artı İkonu */
+.faq-question i {
+    font-size: 14px;
+    color: #000;
+    transition: transform 0.4s ease; /* Dönüş animasyonu */
+}
+
+/* Gizli Cevap Alanı */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden; /* İçeriği kes ve gizle */
+    transition: max-height 0.4s ease, padding 0.4s ease; /* Pürüzsüz açılma */
+}
+
+.faq-answer p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #666;
+    margin: 0;
+    padding: 0 0 25px 0; /* Alt boşluk */
+}
+
+/* --- AKTİF (AÇIK) DURUMU --- */
+.faq-item.active .faq-answer {
+    max-height: 300px; /* İçeriğin sığabileceği kadar bir yükseklik veriyoruz */
+}
+
+.faq-item.active .faq-question {
+    color: #000;
+}
+
+/* Kutu açılınca Artı ikonu 45 derece dönerek Çarpı (X) şeklini alsın */
+.faq-item.active .faq-question i {
+    transform: rotate(45deg);
+}
